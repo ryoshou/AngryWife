@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &99922108631118410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99922108631118413}
+  - component: {fileID: 99922108631118414}
+  - component: {fileID: 99922108631118415}
+  - component: {fileID: 99922108631118408}
+  - component: {fileID: 99922108631118409}
+  m_Layer: 0
+  m_Name: Shooting Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &99922108631118413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99922108631118410}
+  m_LocalRotation: {x: 0.7022525, y: 0, z: 0, w: 0.711928}
+  m_LocalPosition: {x: -0.177, y: 3.9, z: -1.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.216, y: 0, z: 0}
+--- !u!33 &99922108631118414
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99922108631118410}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &99922108631118415
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99922108631118410}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &99922108631118408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99922108631118410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &99922108631118409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99922108631118410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb811de9985018949a1697f2f3c838b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullets:
+  - {fileID: 3890117989527134707, guid: db8e7bb2493245742a28eeb5dc4f1cee, type: 3}
+  - {fileID: 5925124275488884964, guid: b945ec17d477a5c419fda387c1c4732d, type: 3}
+  - {fileID: 6883779854397300496, guid: 59adcb61019687444af8bf7411e6fa68, type: 3}
+  - {fileID: 3890117989527134707, guid: 212d2375f302e7549a6abfe0e3e8830c, type: 3}
+  - {fileID: 5925124275488884964, guid: b945ec17d477a5c419fda387c1c4732d, type: 3}
+  - {fileID: 5925124275488884964, guid: 17c0397c30556af4d93c30b9418e73a7, type: 3}
+  - {fileID: 5925124275488884964, guid: 8f79e11da01515b43ab2f074b93f7167, type: 3}
+  - {fileID: 6883779854397300496, guid: 59adcb61019687444af8bf7411e6fa68, type: 3}
+  - {fileID: 6883779854397300496, guid: 428d1d18f419d32489dfe54c326b1996, type: 3}
+  - {fileID: 6883779854397300496, guid: 660d01a7bb2010d4eb6e65b606aae7d0, type: 3}
+  currentForce: 2.6
+  endForce: 5
+  addForce: 0.2
+  timeSecondAttack: 15
+  timAddToFindNextAttack: 12
+  timCatDogRandom: 30
+  timeRandomNext: 15
+  _items:
+  - {fileID: 8442075971973630625, guid: bf0c0684cbc68c145bbf4e6a9d075e8d, type: 3}
+  - {fileID: 3815401712687917897, guid: 170c0ab920b234142ba50f546017e87e, type: 3}
+  - {fileID: 6983176618592793475, guid: e7a7f4106d46a13409d26f608ff67713, type: 3}
+  player: {fileID: 0}
+  bigbullet: {fileID: 3890117989527134707, guid: 212d2375f302e7549a6abfe0e3e8830c,
+    type: 3}
