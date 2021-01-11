@@ -2111,6 +2111,12 @@ PrefabInstance:
       propertyPath: timeChildappear
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 2123833388024597628, guid: f643c8f4afb2f174ca26e8bac94be5c3,
+        type: 3}
+      propertyPath: caydu
+      value: 
+      objectReference: {fileID: 6983176618592793475, guid: e7a7f4106d46a13409d26f608ff67713,
+        type: 3}
     - target: {fileID: 2123833388024597630, guid: f643c8f4afb2f174ca26e8bac94be5c3,
         type: 3}
       propertyPath: m_Name

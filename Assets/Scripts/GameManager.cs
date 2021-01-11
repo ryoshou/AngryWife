@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     bool gameHasEnded = false;
     // public Text gameOverText;
+    // public bool isShooting = false;
+    public bool isSpawnChild = false;
     void Awake()
     {
         if (instance == null)

@@ -17,28 +17,39 @@ public class MovingChildren : MonoBehaviour
     private GameObject gbSpawn = null;
     private float speed = 2.2f;
     private float speedtmp = 2.2f;
+    public GameObject caydu,player;
     void Awake()
     {
       
     }
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("player");
        // rb2D = children.GetComponent<Rigidbody2D>();   
+
     }
 
 
     private Vector3 move;
+    // bool checkSpawn = false;
     void Update()
     {
         currentTime += Time.deltaTime;
         //Debug.Log(currentTime);
         if (currentTime >= timeChildappear)
         {
-            timeChildappear += 20f;
-            gbSpawn = Instantiate(children, transform.position, Quaternion.identity);
-            gbSpawn.SetActive(true);
-            move = RandomDirection();
-            StartCoroutine(Go(gbSpawn));
+            GameManager gameManager = GameManager.GetInstance();
+                // Debug.Log("Spawn child after 1.5s");
+                gameManager.isSpawnChild = true;
+                StartCoroutine(SpawnChild(0.5f));
+                // checkSpawn=true;
+                timeChildappear += 20f;
+                // gameManager.isShooting=false;
+            // gbSpawn = Instantiate(children, transform.position, Quaternion.identity);
+            // gbSpawn.SetActive(true);
+            // move = RandomDirection();
+            // StartCoroutine(Go(gbSpawn));
+            // Zone();
         }
         if (gbSpawn != null)
         {
@@ -64,5 +75,34 @@ public class MovingChildren : MonoBehaviour
     private Vector3 RandomDirection()
     {
         return new Vector3(Random.Range(children.transform.position.x - 0.5f, children.transform.position.x + 0.5f), -1, 0);
+    }
+    private IEnumerator SpawnChild(float s){
+        Zone();
+        
+        gbSpawn = Instantiate(children, transform.position, Quaternion.identity);
+        gbSpawn.SetActive(true);
+        move = RandomDirection();
+        StartCoroutine(Go(gbSpawn));
+        yield return new WaitForSeconds(s);
+        GameManager gameManager = GameManager.GetInstance();
+        gameManager.isSpawnChild = false;    
+        // checkSpawn=false;
+      }
+    
+    private void Zone()
+    {
+        //random position
+        float _x = Random.Range(player.transform.position.x-1f,player.transform.position.x+1f);
+        float _y = Random.Range(player.transform.position.y-1f,player.transform.position.y+1f);
+        GameObject item = Instantiate(caydu, new Vector3(_x, _y, player.transform.position.z), player.transform.rotation);
+        item.SetActive(true);
+        StartCoroutine(DisplayItem(item, 3f));
+    }
+
+    // display item 
+    private IEnumerator DisplayItem(GameObject item, float second)
+    {
+        yield return new WaitForSeconds(second);
+        item.SetActive(false);
     }
 }
