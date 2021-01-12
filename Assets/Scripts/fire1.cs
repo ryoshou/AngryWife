@@ -56,7 +56,7 @@ public class fire1 : MonoBehaviour
     }
     void Start()
     {
-        currentTime = Time.timeSinceLevelLoad;
+        currentTime = 0;
         waitingTime = 1.0f;
         InvokeRepeating("Zone", 0.3f,Random.Range(3.0f,4.0f));
         timetonextrandomattack = timeSecondAttack;
@@ -121,6 +121,7 @@ public class fire1 : MonoBehaviour
                     }
                 }
             }else
+            // ShootPlayer(2);
                 Shoot();
 
             waitingTime+=Random.Range(1.3f,1.6f);
@@ -182,7 +183,7 @@ public class fire1 : MonoBehaviour
         for (int i = 0; i < sl; i++)
         {
             Rigidbody2D rb = gb[0].GetComponent<Rigidbody2D>();
-            rb.AddForce(new Vector3(director.x + _lech, director.y, director.z) * currentForce, ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(director.x + _lech, director.y) * currentForce, ForceMode2D.Impulse);
             if (gb[i].GetComponent<BoxCollider2D>() != null)
             {
                 gb[i].GetComponent<BoxCollider2D>().isTrigger = false;

@@ -24,6 +24,8 @@ public class MovingChildren : MonoBehaviour
     }
     void Start()
     {
+        currentTime = 0;
+        waitingTime =0;
         player = GameObject.FindGameObjectWithTag("player");
        // rb2D = children.GetComponent<Rigidbody2D>();   
 

@@ -17,8 +17,12 @@ public class story : MonoBehaviour
     private int i;
     bool okay = false;
     bool checkkk= false;
+    bool chay = false;
+    int soLanCham;
     void Start()
     {
+        soLanCham=0;
+        Time.timeScale = 1;
         au = human.GetComponent<AudioSource>();
         animator = human.GetComponent<Animator>();
         animator_man = man.GetComponent<Animator>();
@@ -44,13 +48,32 @@ public class story : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (i >= 6 && checkkk==false)
         {
             checkkk=true;
             peo.text = people[6];
             sto.text = mang[6];
-                StartCoroutine(set_slow(0.7f));
+            animator.SetBool("ata",true);
+            chay=true;
+        }
+        if (Vector3.Distance(human.transform.position,man.transform.position)<=1)
+        {
+            animator_man.SetBool("bay",true);
+             StartCoroutine(set_slow(1f));
+        }
+        if(chay==true)
+        {
+            human.transform.position = Vector3.Lerp(human.transform.position,man.transform.position,0.5f*Time.deltaTime);
+        }
+        if (Input.touchCount>soLanCham)
+        {
+            Debug.LogError("nxn");
+            ClickNext();
+            soLanCham++;
+        }
+        if (Input.touchCount==0)
+        {
+            soLanCham=0;
         }
     }
     public void ClickNext()

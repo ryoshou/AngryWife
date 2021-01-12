@@ -50,12 +50,14 @@ public class bl_ControllerExample : MonoBehaviour {
         Vector3 sca = transform.localScale;
             if (h<0)
             {
-                sca.x = -1;
+                if(sca.x>0)
+                sca.x = -sca.x;
                 transform.localScale = sca;
             }
             if(h>0)
             {
-                sca.x = 1;
+                if(sca.x<0)
+                sca.x = -sca.x;
                 transform.localScale = sca;
             }
         }
