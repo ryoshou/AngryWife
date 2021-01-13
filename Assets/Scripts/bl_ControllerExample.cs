@@ -39,13 +39,13 @@ public class bl_ControllerExample : MonoBehaviour {
             float yraochan = raochan.transform.position.y;
             temp = Speed;
             if (Camera.main.WorldToScreenPoint(transform.position).x >= Camera.main.pixelWidth-3 && h > 0)
-                temp = 0;
+                h=0;
             if (Camera.main.WorldToScreenPoint(transform.position).x <= 3 && h < 0)
-                temp = 0;
+                h=0;
             if (Camera.main.WorldToScreenPoint(transform.position).y >= Camera.main.WorldToScreenPoint(raochan.transform.position).y && v > 0)
-                temp = 0;
+                v=0;
             if (Camera.main.WorldToScreenPoint(transform.position).y <= 3 && v < 0)
-                temp = 0;
+                v=0;
         //    transform.up = translate;
         Vector3 sca = transform.localScale;
             if (h<0)
