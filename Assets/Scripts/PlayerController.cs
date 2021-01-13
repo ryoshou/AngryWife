@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    public GameObject item;
+    public GameObject item,move;
     [SerializeField]
     public GameObject khieng;
     //[SerializeField]
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        speed = move.GetComponent<bl_ControllerExample>().Speed;
+        speed_slow = speed / 2;
         viengach.SetActive(false);
         position_viengach = viengach.transform.position;
         sca = transform.localScale;
@@ -116,7 +118,7 @@ public class PlayerController : MonoBehaviour
         // slow
         if (collision.gameObject.tag.Equals("itemslow"))
         {
-            transform.GetComponent<bl_ControllerExample>().Speed = speed_slow;
+            move.GetComponent<bl_ControllerExample>().Speed = speed_slow;
             StartCoroutine(set_slow(Time_slow));
             collision.gameObject.SetActive(false);
         }
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator set_slow( float second)
     {
         yield return new WaitForSeconds(second);
-        transform.GetComponent<bl_ControllerExample>().Speed = speed;
+        move.GetComponent<bl_ControllerExample>().Speed = speed;
     }
     private IEnumerator set_sca(float second)
     {
