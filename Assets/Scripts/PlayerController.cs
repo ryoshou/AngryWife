@@ -36,14 +36,17 @@ public class PlayerController : MonoBehaviour
     {
         if(quang == true)
         {
-            viengach.transform.position = Vector3.Lerp(viengach.transform.position, vo.transform.position, 5 * Time.deltaTime);
+            viengach.transform.position = Vector3.Lerp(viengach.transform.position, vo.transform.position, 3 * Time.deltaTime);
         }  
+        else
+        {
+            viengach.transform.position = transform.position;
+        }
         if(Vector3.Distance(viengach.transform.position,vo.transform.position)<=0.5)
         {
             pool.GetComponent<fire1>().waitingTime += 3;
             quang = false;
             viengach.SetActive(false);
-            viengach.transform.position = transform.position;
         }    
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             this.gameObject.SetActive(false);
            canvas.GetComponent<Game_Controller_UI>().GameOver();
-            
+            GameObject smp = Instantiate(playerdie, transform.position, Quaternion.identity);
             GameObject sm = Instantiate(efect, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(sm, 0.4f);
         }
@@ -99,7 +102,7 @@ public class PlayerController : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             canvas.GetComponent<Game_Controller_UI>().GameOver();
-           
+            GameObject smp = Instantiate(playerdie, transform.position, Quaternion.identity);
             GameObject sm = Instantiate(efect, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(sm, 0.4f);
         }
@@ -130,7 +133,7 @@ public class PlayerController : MonoBehaviour
             quang = true;
             viengach.SetActive(true);
             collision.gameObject.SetActive(false);
-            StartCoroutine(set_viengach(3));
+            StartCoroutine(set_viengach(2.5f));
         }
     }
     private IEnumerator DisplayItem(GameObject item, float second)

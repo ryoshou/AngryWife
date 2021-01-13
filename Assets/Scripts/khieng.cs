@@ -9,17 +9,24 @@ public class khieng : MonoBehaviour
     public GameObject explosePoint;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        collision.gameObject.SetActive(false);
-        Instantiate(efect,collision.gameObject.transform.position,Quaternion.identity);
+        if (collision.gameObject.tag.Equals("bullet"))
+        {
+            Debug.Log(collision.gameObject.name);
+            collision.gameObject.SetActive(false);
+            GameObject sm =  Instantiate(efect, explosePoint.transform.position, Quaternion.identity);
+            Destroy(sm, 0.4f);
+        }
        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        collision.gameObject.SetActive(false);
-        GameObject sm =  Instantiate(efect, explosePoint.transform.position, Quaternion.identity);
-        Destroy(sm, 0.4f);
+        if (collision.gameObject.tag.Equals("bullet"))
+        {
+            Debug.Log(collision.gameObject.name);
+            collision.gameObject.SetActive(false);
+            GameObject sm =  Instantiate(efect, explosePoint.transform.position, Quaternion.identity);
+            Destroy(sm, 0.4f);
+        }
     }
     void Start()
     {

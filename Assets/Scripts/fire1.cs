@@ -43,6 +43,8 @@ public class fire1 : MonoBehaviour
 
     private float timetonextrandomattack;
     public Animator animator;
+    public float gravity_bullet_start=0.2f;
+    private float gravityScaleTime = 0f;
 
 
     [SerializeField]
@@ -54,10 +56,14 @@ public class fire1 : MonoBehaviour
     }
     void Start()
     {
-        currentTime = Time.timeSinceLevelLoad;
+        currentTime = 0;
         waitingTime = 1.0f;
-        InvokeRepeating("Zone", 0.3f,Random.Range(1.0f,10.0f));
+        InvokeRepeating("Zone", 3.0f,Random.Range(3.0f,4.0f));
         timetonextrandomattack = timeSecondAttack;
+        for(int i=0 ;i<bullets.Length;i++)
+        {
+            bullets[i].GetComponent<Rigidbody2D>().gravityScale=gravity_bullet_start;
+        }
     }
     int checktoaddforce = 0;
     int randomBullet()
@@ -69,12 +75,15 @@ public class fire1 : MonoBehaviour
     {
         //ShootPlayer();
         //Debug.Log(Time.time);
+        GameManager gameManager = GameManager.GetInstance();
         Debug.Log("currentForce: "+currentForce);
         Debug.Log("time find next attack: " +timetonextrandomattack);
         currentTime += Time.deltaTime;
         animator.SetBool("isAttack",false);
-        if (currentTime >= waitingTime)
+        if (currentTime >= waitingTime && gameManager.isSpawnChild==false)
         {
+            // gameManager.isShooting=true;
+            // Debug.Log("is Shooting");
             animator.SetBool("isAttack",true);
             // 15s add force 0.2
             if (currentTime / 15 > checktoaddforce)
@@ -112,9 +121,19 @@ public class fire1 : MonoBehaviour
                     }
                 }
             }else
+            // ShootPlayer(2);
                 Shoot();
 
-            waitingTime++;
+            waitingTime=currentTime + Random.Range(1.1f,1.4f);
+            //gameManager.isShooting=false;
+        }
+        if (currentTime >= gravityScaleTime)
+        {
+            gravityScaleTime+=10f;
+            for (int i=0;i<bullets.Length;i++)
+            {
+                bullets[i].GetComponent<Rigidbody2D>().gravityScale+=0.1f;
+            }
         }
     }
     private void FixedUpdate()
@@ -164,7 +183,7 @@ public class fire1 : MonoBehaviour
         for (int i = 0; i < sl; i++)
         {
             Rigidbody2D rb = gb[0].GetComponent<Rigidbody2D>();
-            rb.AddForce(new Vector3(director.x + _lech, director.y, director.z) * currentForce, ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(director.x + _lech, director.y) * currentForce, ForceMode2D.Impulse);
             if (gb[i].GetComponent<BoxCollider2D>() != null)
             {
                 gb[i].GetComponent<BoxCollider2D>().isTrigger = false;
@@ -204,7 +223,7 @@ public class fire1 : MonoBehaviour
         float _x = Random.Range(-2f, 2f);
         float _y = Random.Range(-5f, 1f);
         GameObject item = Instantiate(_items[Random.Range(0,_items.Length)], new Vector3(_x, _y, this.transform.position.z), this.transform.rotation);
-        StartCoroutine(DisplayItem(item, 2.0f));
+        StartCoroutine(DisplayItem(item, 3f));
     }
 
     // display item 

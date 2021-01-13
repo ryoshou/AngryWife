@@ -7,29 +7,34 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource[] sounds;
-    private static AudioManager audio_instance = null;
-    void Awake()
-    {
-        if (audio_instance == null)
-        {
-            audio_instance=this;
-            DontDestroyOnLoad(audio_instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-    // public void Play(string name)
+    public AudioSource audioSource;
+    public AudioClip[] clips;
+    // private static AudioManager audio_instance = null;
+    // void Awake()
     // {
-    //     Sound s = Array.Find(sounds, sound => sound.name == name);
-    //     if (s==null)
+    //     if (audio_instance == null)
     //     {
-    //         Debug.Log("Sound: "+ name + " not found!");
+    //         audio_instance=this;
+    //         DontDestroyOnLoad(audio_instance);
+    //     }
+    //     else
+    //     {
+    //         Destroy(gameObject);
     //         return;
     //     }
-    //     s.source.Play();
     // }
+    void Start()
+    {
+        var buttons = Resources.FindObjectsOfTypeAll<Button>();
+        foreach (Button button in buttons)
+        {
+            button.onClick.AddListener(delegate {Play("Click");});
+        }
+    }
+    public void Play(string clipName)
+    {
+        AudioClip audioClip = Array.Find(clips, clip => clip.name == clipName);
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
 }
