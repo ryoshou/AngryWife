@@ -43,9 +43,9 @@ public class MovingChildren : MonoBehaviour
             GameManager gameManager = GameManager.GetInstance();
                 // Debug.Log("Spawn child after 1.5s");
                 gameManager.isSpawnChild = true;
-                StartCoroutine(SpawnChild(0.5f));
+                StartCoroutine(SpawnChild(1.0f));
                 // checkSpawn=true;
-                timeChildappear += 20f;
+                timeChildappear =currentTime+ 20f;
                 // gameManager.isShooting=false;
             // gbSpawn = Instantiate(children, transform.position, Quaternion.identity);
             // gbSpawn.SetActive(true);
@@ -79,8 +79,8 @@ public class MovingChildren : MonoBehaviour
         return new Vector3(Random.Range(children.transform.position.x - 0.5f, children.transform.position.x + 0.5f), -1, 0);
     }
     private IEnumerator SpawnChild(float s){
+        yield return new WaitForSeconds(s);
         Zone();
-        
         gbSpawn = Instantiate(children, transform.position, Quaternion.identity);
         gbSpawn.SetActive(true);
         move = RandomDirection();

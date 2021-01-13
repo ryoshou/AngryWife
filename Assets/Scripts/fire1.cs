@@ -58,7 +58,7 @@ public class fire1 : MonoBehaviour
     {
         currentTime = 0;
         waitingTime = 1.0f;
-        InvokeRepeating("Zone", 0.3f,Random.Range(3.0f,4.0f));
+        InvokeRepeating("Zone", 3.0f,Random.Range(3.0f,4.0f));
         timetonextrandomattack = timeSecondAttack;
         for(int i=0 ;i<bullets.Length;i++)
         {
@@ -124,7 +124,7 @@ public class fire1 : MonoBehaviour
             // ShootPlayer(2);
                 Shoot();
 
-            waitingTime+=Random.Range(1.3f,1.6f);
+            waitingTime=currentTime + Random.Range(1.1f,1.4f);
             //gameManager.isShooting=false;
         }
         if (currentTime >= gravityScaleTime)

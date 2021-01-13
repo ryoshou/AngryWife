@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToggleScript11 : MonoBehaviour
 {
@@ -14,14 +15,14 @@ public class ToggleScript11 : MonoBehaviour
         {
             on.gameObject.SetActive(true);
             off.gameObject.SetActive(false);
-            Camera.main.GetComponent<AudioListener> ().enabled  =  true;
+            AudioListener.volume = 1.0f;
             Debug.Log("TURN ON AUDIO");
         }
         else
         {
             off.gameObject.SetActive(true);
             on.gameObject.SetActive(false);
-            Camera.main.GetComponent<AudioListener> ().enabled  =  false;
+            AudioListener.volume = 0f;
         }
     }
     public void Turn()
@@ -30,14 +31,14 @@ public class ToggleScript11 : MonoBehaviour
         {
             on.gameObject.SetActive(false);
             off.gameObject.SetActive(true);
-            Camera.main.GetComponent<AudioListener> ().enabled  =  false;
+            AudioListener.volume = 0f;
             PlayerPrefs.SetInt("AudioOn",0);
         }
         else
         {
             off.gameObject.SetActive(false);
             on.gameObject.SetActive(true);
-            Camera.main.GetComponent<AudioListener> ().enabled  =  true;
+            AudioListener.volume = 1.0f;
             PlayerPrefs.SetInt("AudioOn",1);
         }
     }

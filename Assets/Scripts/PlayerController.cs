@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
             quang = true;
             viengach.SetActive(true);
             collision.gameObject.SetActive(false);
-            StartCoroutine(set_viengach(3));
+            StartCoroutine(set_viengach(2.5f));
         }
     }
     private IEnumerator DisplayItem(GameObject item, float second)
